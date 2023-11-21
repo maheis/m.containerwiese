@@ -1,7 +1,5 @@
 # Docker
-.dockerignore
-Dockerfile
-docker-compose.yml
+dockerfile
 
 # Node.js
 node_modules/
