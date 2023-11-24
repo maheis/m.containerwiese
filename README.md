@@ -11,6 +11,8 @@ sudo usermod -aG docker mani
 ```
 
 # Commands
+Alle Befehle sind hier in Kurzform aufgelistet. Viele Befehle können aber auch bequem in einem docker-compose.yaml File zusammengefasst werden. Siehe dazu die Beispiele, darin sind auch docker-compose.yaml Files abgelegt. Im VSCode kann Docker aber auch bequem als GUI verwendet werden.
+
 ## Images
 ```bash
 # image herunterladen
