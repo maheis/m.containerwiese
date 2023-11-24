@@ -2,9 +2,8 @@
 Meine Spielwiese für Docker... Kleine Anleitungen, Notizen und vor allem viel Trial and error. Alles was mir hilft um Docker zu lernen und verstehen!
 
 # Install
-```shell
-sudo apt install \
-docker.io podman skopeo
+```bash
+sudo apt install docker.io docker-compose
 
 # Benutzerberechtigungen
 sudo usermod -aG docker mani
@@ -31,17 +30,21 @@ docker run <image>
 docker run -it <image>
 # mit detach
 docker run -d <image>
-# mit portmapping
+# mit portmapping tcp
 docker run -p <hostport>:<containerport> <image>
-# mit volume
+# mit portmappingudp
+docker run -p <hostport>:<containerport>/udp <image>
+# mit volume rw
 docker run -v <hostpath>:<containerpath> <image>
+# mit volume ro
+docker run -v <hostpath>:<containerpath>:ro <image>
 # mit env
 docker run -e <env>=<value> <image>
 # mit command
 docker run <image> <command>
 # mit namen
 docker run --name <name> <image>
-# mit restart (?)
+# nach reboot wieder start
 docker run --restart always <image>
 # ...
 ```

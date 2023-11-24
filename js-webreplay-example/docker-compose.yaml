@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  web:
+    container_name: 'js-webreplay-example'
+    image: 'js-webreplay-example'
+    # restart: always
+    # hostname: 'js-webreplay-example.l0la59.l11'
+    environment:
+      MESSAGE: 'Hello Compose!'
+      PORT: 4444
+    ports:
+      - '3333:4444'
+    shm_size: '64m'

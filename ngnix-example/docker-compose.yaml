@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  web:
+    container_name: 'ngnix-example'
+    image: 'ngnix-example'
+    # restart: always
+    # hostname: 'ngnix-example.l0la59.l11'
+    ports:
+      - '3333:80'
+    shm_size: '64m'
