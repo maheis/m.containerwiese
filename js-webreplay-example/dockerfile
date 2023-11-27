@@ -1,14 +1,14 @@
-FROM node:alpine as baseImage
+FROM node:alpine as baseimage
 USER node
 
 #-----
 # Install dependencies
-FROM baseImage as buildImage
+FROM baseimage as buildimage
 COPY --chown=node:node package*.json /home/node/app/
 RUN cd /home/node/app && npm install
 COPY --chown=node:node . /home/node/app
 
 #-----
-FROM baseImage
-COPY --from=buildImage --chown=node:node /home/node/app /home/node/app
+FROM baseimage
+COPY --from=buildimage --chown=node:node /home/node/app /home/node/app
 CMD ["node", "/home/node/app/index.js"]
