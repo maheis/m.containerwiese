@@ -2,12 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: motd
-  namespace: my-namespace
+  namespace: containerwiese
 spec:
   selector:
     matchLabels:
       app: motd
   replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1 # 1 pod more than the desired number of pods (for update...)
+      maxUnavailable: 0 # 0 pods less than the desired number of pods (for update...)
   template: # template for the pods
     metadata:
       labels:
@@ -19,7 +24,35 @@ spec:
           image: localhost:5000/js-motd-kubernetes-example:latest
           env:
             - name: PORT
-              value: "3333"
+              value: "4242"
           ports:
-            - name: port # lowercase! and only a-z, 0-9, and - are allowed
-              containerPort: 3333
+            - name: port
+              containerPort: 4242
+          # imagePullPolicy: Always # always pull the image, even if it's already there
+          # imagePullSecrets: # pull secret for private registry
+          #   - name: dockerhub
+          resources:
+            limits: # maximum resources allowed
+              cpu: "420m" # 500 millicpu = 0.5 cpu, 1000 millicpu = 1 cpu
+              memory: "420Mi"
+            requests: # minimum resources required
+              cpu: "42m"
+              memory: "42Mi"
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: port
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: port
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
