@@ -1,3 +1,4 @@
 .git/
 node-modules/
-dockerfile
+docker*
+kube_*
