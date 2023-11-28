@@ -1,2 +1,2 @@
 build:
-	@docker build -t js-motd-kubernetes-example .
+	@docker build -t 192.168.49.2:5000/js-motd-kubernetes-example .
