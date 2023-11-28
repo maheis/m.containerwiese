@@ -49,7 +49,7 @@ const server = http.createServer((req, res) => {
             break
     }
 
-    res.end(message)
+    res.end(message + "\r\n")
 })
 
 server.listen(port, () => {
