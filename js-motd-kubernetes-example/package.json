@@ -1,0 +1,23 @@
+{
+  "name": "js-motd-kubernetes-example",
+  "version": "1.0.0",
+  "description": "Simple example for Dockerbuild",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maheis/m.dockerwiese.git"
+  },
+  "author": "mani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maheis/m.dockerwiese/issues"
+  },
+  "homepage": "https://github.com/maheis/m.dockerwiese#readme",
+  "dependencies": {
+    "http": "^0.0.1-security",
+    "processenv": "^3.0.9"
+  }
+}

@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  web:
+    container_name: 'js-motd-kubernetes-example'
+    image: 'js-motd-kubernetes-example'
+    # restart: always
+    # hostname: 'js-motd-kubernetes-example.l0la59.l11'
+    environment:
+      PORT: 4444
+    ports:
+      - '3333:4444'
+    shm_size: '64m'
