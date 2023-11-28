@@ -6,26 +6,26 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: motd
+      app: motd # label selector must match the labels in the pod template
   replicas: 1
   strategy:
-    type: RollingUpdate
+    type: RollingUpdate # update strategy
     rollingUpdate:
       maxSurge: 1 # 1 pod more than the desired number of pods (for update...)
       maxUnavailable: 0 # 0 pods less than the desired number of pods (for update...)
   template: # template for the pods
     metadata:
       labels:
-        app: motd
+        app: motd # lable must match the selector in the selector section
     spec:
       automountServiceAccountToken: false # disable service account token, so that the pod can't access the API from Kubernetes itself
       containers:
         - name: motd
-          image: localhost:5000/js-motd-kubernetes-example:latest
-          env:
+          image: localhost:5000/js-motd-kubernetes-example:latest # latest is a bad idea, use a version number instead
+          env: # environment variables
             - name: PORT
               value: "4242"
-          ports:
+          ports: # ports to expose
             - name: port
               containerPort: 4242
           # imagePullPolicy: Always # always pull the image, even if it's already there
@@ -34,7 +34,7 @@ spec:
           resources:
             limits: # maximum resources allowed
               cpu: "420m" # 500 millicpu = 0.5 cpu, 1000 millicpu = 1 cpu
-              memory: "420Mi"
+              memory: "420Mi" # 1024 mebibyte = 1 gibibyte
             requests: # minimum resources required
               cpu: "42m"
               memory: "42Mi"
