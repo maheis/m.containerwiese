@@ -8,15 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maheis/m.dockerwiese.git"
+    "url": "git+https://github.com/maheis/m.containerwiese.git"
   },
   "author": "mani",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/maheis/m.dockerwiese/issues"
+    "url": "https://github.com/maheis/m.containerwiese/issues"
   },
-  "homepage": "https://github.com/maheis/m.dockerwiese#readme",
+  "homepage": "https://github.com/maheis/m.containerwiese#readme",
   "dependencies": {
+    "express": "^4.18.2",
     "http": "^0.0.1-security",
     "processenv": "^3.0.9"
   }

@@ -7,12 +7,12 @@ spec:
   selector:
     matchLabels:
       app: motd # label selector must match the labels in the pod template
-  replicas: 1
+  replicas: 1 # desired number of pods
   strategy:
     type: RollingUpdate # update strategy
     rollingUpdate:
-      maxSurge: 1 # 1 pod more than the desired number of pods (for update...)
-      maxUnavailable: 0 # 0 pods less than the desired number of pods (for update...)
+      maxSurge: 1 # 1 pod more than the desired number of pods
+      maxUnavailable: 0 # 0 pods less than the desired number of pods
   template: # template for the pods
     metadata:
       labels:
@@ -40,8 +40,9 @@ spec:
               memory: "42Mi"
           readinessProbe:
             httpGet:
-              path: /healthz
+              host: 10.244.0.53
               port: port
+              path: /healthz
             initialDelaySeconds: 5
             periodSeconds: 5
             timeoutSeconds: 1
@@ -49,9 +50,10 @@ spec:
             failureThreshold: 3
           livenessProbe:
             httpGet:
-              path: /healthz
+              host: 10.244.0.53
               port: port
-            initialDelaySeconds: 5
+              path: /healthz
+            initialDelaySeconds: 30
             periodSeconds: 5
             timeoutSeconds: 1
             successThreshold: 1

@@ -1,12 +1,11 @@
-const { randomInt } = require('crypto')
-const http = require('http')
 const { processenv } = require('processenv')
+const { randomInt } = require('crypto')
+const express = require('express');
 
+const app = express();
 const port = processenv('PORT', 3333)
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/plain' })
-
+app.get('/', (req, res) => {
     switch (randomInt(1, 13)) {
         case 1:
             var message = "So long, and thanks for all the fish."
@@ -49,9 +48,14 @@ const server = http.createServer((req, res) => {
             break
     }
 
-    res.end(message + "\r\n")
+    res.send(message + "\r\n")
 })
 
-server.listen(port, () => {
-    console.log(`Server running on port ${port}`)
-})
+// Liveness probe
+app.get('/healthz', (req, res) => {
+    res.send('OK');
+});
+
+app.listen(port, () => {
+    console.log(`App running on http://localhost:${port}`);
+});
