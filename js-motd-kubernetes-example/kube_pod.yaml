@@ -40,9 +40,8 @@ spec:
               memory: "42Mi"
           readinessProbe:
             httpGet:
-              host: 10.244.0.53
               port: port
-              path: /healthz
+              path: /readyz
             initialDelaySeconds: 5
             periodSeconds: 5
             timeoutSeconds: 1
@@ -50,7 +49,6 @@ spec:
             failureThreshold: 3
           livenessProbe:
             httpGet:
-              host: 10.244.0.53
               port: port
               path: /healthz
             initialDelaySeconds: 30

@@ -51,6 +51,11 @@ app.get('/', (req, res) => {
     res.send(message + "\r\n")
 })
 
+// Readiness probe
+app.get('/readyz', (req, res) => {
+    res.send('OK');
+});
+
 // Liveness probe
 app.get('/healthz', (req, res) => {
     res.send('OK');
