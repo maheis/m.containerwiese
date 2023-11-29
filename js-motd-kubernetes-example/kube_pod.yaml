@@ -72,3 +72,5 @@ spec:
   # type: ClusterIP # internal service *default
   # type: NodePort # external service - random port over 30000-32767
   type: LoadBalancer # external service
+  externalIPs: # external fixed IP addresses
+    - 192.168.49.2
