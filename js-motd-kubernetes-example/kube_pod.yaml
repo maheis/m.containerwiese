@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: motd # label selector must match the labels in the pod template
-  replicas: 1 # desired number of pods
+  replicas: 3 # desired number of pods
   strategy:
     type: RollingUpdate # update strategy
     rollingUpdate:
@@ -56,3 +56,19 @@ spec:
             timeoutSeconds: 1
             successThreshold: 1
             failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: motd
+  namespace: containerwiese
+spec:
+  selector:
+    app: motd
+  ports:
+    - name: exposed-port
+      port: 4242
+      targetPort: port
+  # type: ClusterIP # internal service *default
+  # type: NodePort # external service - random port over 30000-32767
+  type: LoadBalancer # external service
