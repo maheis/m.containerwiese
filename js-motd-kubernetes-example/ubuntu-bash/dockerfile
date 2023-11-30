@@ -6,3 +6,4 @@ RUN apt install -y traceroute
 RUN apt install -y nmap
 RUN apt install -y arp-scan
 RUN apt install -y mtr-tiny
+RUN apt install -y curl

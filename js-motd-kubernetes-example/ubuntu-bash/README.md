@@ -1,2 +1,2 @@
 # ubuntu_bash
-Kleines Testprojekt für die Verwendung von Kubernetes mit einem Ubuntu Container und einem Bash Script.
+Kleines Debugprojektm welches eine bash in einem ubuntu container bereitstellt. So kann innerhalb des Clusters ein Container mit einer bash gestartet werden um z.B. die Netzwerkkonfiguration zu überprüfen.
