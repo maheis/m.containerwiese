@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: containerwiese # lowercase! and only a-z, 0-9, and - are allowed
+  labels:
+    author: mani
+    purpose: test
+# ---
+# Deny all ingress traffic from other namespaces
+# apiVersion: networking.k8s.io/v1
+# kind: NetworkPolicy
+# metadata:
+#   name: deny-ingress
+#   namespace: containerwiese
+# spec:
+#   podSelector: {}
+#   policyTypes:
+#     - Ingress
+#   ingress: []
