@@ -1,0 +1,51 @@
+##
+# This is a simple example of a Kubernetes deployment.
+# It deploys a single pod with a single container running ubuntu-bash.
+# The container runs a bash script that prints "hello world" every 10 seconds.
+# The pod is deployed in a namespace called "ubuntu-bash".
+# The namespace is created in the same file.
+#
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ubuntu-bash # lowercase! and only a-z, 0-9, and - are allowed
+  labels:
+    author: mani
+    purpose: test-ingress
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-bash
+  namespace: ubuntu-bash
+spec:
+  selector:
+    matchLabels:
+      app: ubuntu-bash # label selector must match the labels in the pod template
+  replicas: 1 # desired number of pods
+  strategy:
+    type: RollingUpdate # update strategy
+    rollingUpdate:
+      maxSurge: 1 # 1 pod more than the desired number of pods
+      maxUnavailable: 0 # 0 pods less than the desired number of pods
+  template: # template for the pods
+    metadata:
+      labels:
+        app: ubuntu-bash # lable must match the selector in the selector section
+    spec:
+      automountServiceAccountToken: false # disable service account token, so that the pod can't access the API from Kubernetes itself
+      containers:
+        - name: ubuntu-bash
+          image: localhost:5000/ubuntu-bash:latest # latest is a bad idea, use a version number instead
+          command: [
+              "bash",
+              "-c",
+              "while true; do echo hello world; sleep 10;done",
+            ] # command to run in the container
+          resources:
+            limits: # maximum resources allowed
+              cpu: "1000m" # 500 millicpu = 0.5 cpu, 1000 millicpu = 1 cpu
+              memory: "768Mi" # 1024 mebibyte = 1 gibibyte
+            requests: # minimum resources required
+              cpu: "500m"
+              memory: "100Mi"
