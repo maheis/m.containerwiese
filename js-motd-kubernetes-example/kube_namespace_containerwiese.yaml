@@ -5,15 +5,14 @@ metadata:
   labels:
     author: mani
     purpose: test
-# ---
+---
 # Deny all ingress traffic from other namespaces
-# apiVersion: networking.k8s.io/v1
-# kind: NetworkPolicy
-# metadata:
-#   name: deny-ingress
-#   namespace: containerwiese
-# spec:
-#   podSelector: {}
-#   policyTypes:
-#     - Ingress
-#   ingress: []
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: containerwiese-deny-ingress
+  namespace: containerwiese
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
