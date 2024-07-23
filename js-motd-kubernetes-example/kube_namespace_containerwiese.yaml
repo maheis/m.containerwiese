@@ -16,3 +16,61 @@ spec:
   podSelector: {}
   policyTypes:
     - Ingress
+---
+# Allow ingress traffic to exposed-port
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: containerwiese-allow-ingress
+  namespace: containerwiese
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector: {}
+      ports:
+        - protocol: TCP
+          port: 4242
+# ---
+# Allow all ingress traffic from other pods in the same namespace
+# apiVersion: networking.k8s.io/v1
+# kind: NetworkPolicy
+# metadata:
+#   name: containerwiese-allow-same-namespace
+#   namespace: containerwiese
+# spec:
+#   podSelector: {}
+#   policyTypes:
+#     - Ingress
+#   ingress:
+#     - {}
+# ---
+# Allow ingress traffic from pods with label app=nginx
+# apiVersion: networking.k8s.io/v1
+# kind: NetworkPolicy
+# metadata:
+#   name: containerwiese-allow-nginx
+#   namespace: containerwiese
+# spec:
+#   podSelector:
+#     matchLabels:
+#       app: nginx
+#   policyTypes:
+#     - Ingress
+#   ingress:
+#     - {}
+#---
+# Allow all egress traffic to other namespaces
+# apiVersion: networking.k8s.io/v1
+# kind: NetworkPolicy
+# metadata:
+#   name: containerwiese-allow-egress
+#   namespace: containerwiese
+# spec:
+#   podSelector: {}
+#   policyTypes:
+#     - Egress
+#   egress:
+#     - {}
