@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: motd # label selector must match the labels in the pod template
-  replicas: 3 # desired number of pods
+  replicas: 1 # desired number of pods
   strategy:
     type: RollingUpdate # update strategy
     rollingUpdate:
