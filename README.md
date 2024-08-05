@@ -3,6 +3,7 @@
 Meine Spielwiese für Container, Docker, Kubernetes... Kleine Anleitungen, Notizen und vor allem viel Trial and error. Alles was mir hilft um Docker zu lernen und verstehen!
 
 Notizen erfolgen auf meinem [Blog](https://heister.blog/)...
-[Docker - Installs](https://heister.blog/index.php?article=Docker+-+Installs)
-[Docker - Commands](https://heister.blog/index.php?article=Docker+-+Commands)
-[kubernetes - minikube](https://heister.blog/index.php?article=kubernetes+-+minikube)
+[Docker - Installs](https://heister.email/m.notes/index.php?article=65)
+[Docker - Commands](https://heister.email/m.notes/index.php?article=80)
+[Docker - Build](https://heister.email/m.notes/index.php?article=79)
+[kubernetes - minikube](https://heister.email/m.notes/index.php?article=81)
