@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard-ingress
+  namespace: kubernetes-dashboard
+  labels:
+    app: kubernetes-dashboard-kong-proxy
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  rules:
+    - host: l0la59.l11
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: kubernetes-dashboard-kong-proxy
+              servicePort: 443
